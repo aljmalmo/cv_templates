@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية - الطب والرعاية الصحية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,15 L25,15 L25,25 L35,25 L35,30 L25,30 L25,40 L20,40 L20,30 L10,30 L10,25 L20,25 Z" fill="rgba(255,255,255,0.1)"/><path d="M70,35 L75,35 L75,45 L85,45 L85,50 L75,50 L75,60 L70,60 L70,50 L60,50 L60,45 L70,45 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+        
+        .contact-item i {
+            width: 16px;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #c0392b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job-title, .degree {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #c0392b;
+            margin-bottom: 5px;
+        }
+        
+        .company, .institution {
+            font-weight: 500;
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .medical-achievements {
+            background: #fdf2f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .medical-achievements h4 {
+            color: #c0392b;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .medical-achievements ul {
+            list-style: none;
+            padding-right: 0;
+        }
+        
+        .medical-achievements li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .medical-achievements li::before {
+            content: '⚕️';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #e74c3c;
+        }
+        
+        .skill-category h4 {
+            color: #c0392b;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .language-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #ecf0f1;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #c0392b;
+            margin-bottom: 5px;
+        }
+        
+        .language-level {
+            color: #e74c3c;
+            font-size: 0.9em;
+        }
+        
+        .certifications-list {
+            list-style: none;
+        }
+        
+        .certification-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .cert-name {
+            font-weight: 600;
+            color: #c0392b;
+            margin-bottom: 5px;
+        }
+        
+        .cert-issuer {
+            color: #e74c3c;
+            font-size: 0.9em;
+        }
+        
+        .cert-date {
+            color: #7f8c8d;
+            font-size: 0.85em;
+            float: left;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover, .education-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">د. محمد عبدالله الأحمد</h1>
+                <p class="title">طبيب باطنة</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span>dr.mohammed.ahmad@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+966 50 111 2222</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>الرياض، المملكة العربية السعودية</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">نبذة مختصرة</h2>
+                <p class="summary">
+                    طبيب باطنة معتمد مع 8 سنوات من الخبرة في تشخيص وعلاج الأمراض الباطنية. خبرة واسعة في إدارة الحالات المعقدة والطوارئ الطبية. ملتزم بتقديم رعاية صحية عالية الجودة ومتابعة أحدث التطورات الطبية. أسعى دائماً لتطبيق أفضل الممارسات الطبية وتقديم رعاية شاملة ومتميزة للمرضى.
+                </p>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">الخبرة المهنية</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">طبيب باطنة أول</h3>
+                    <p class="company">مستشفى الملك فهد التخصصي</p>
+                    <p class="date">يوليو 2020 - حتى الآن</p>
+                    <p class="description">
+                        تشخيص وعلاج مجموعة واسعة من الأمراض الباطنية. إدارة وحدة العناية المركزة وقيادة فريق طبي من 12 عضو. تطوير بروتوكولات علاجية جديدة أدت إلى تحسين نتائج المرضى بنسبة 25%.
+                    </p>
+                    <div class="medical-achievements">
+                        <h4>الإنجازات الطبية:</h4>
+                        <ul>
+                            <li>علاج أكثر من 2000 حالة باطنية معقدة</li>
+                            <li>تقليل معدل الوفيات في وحدة العناية المركزة بنسبة 15%</li>
+                            <li>تطوير بروتوكول جديد لعلاج مرضى السكري</li>
+                            <li>الإشراف على تدريب 20 طبيب مقيم</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">طبيب مقيم - باطنة</h3>
+                    <p class="company">مستشفى الملك خالد الجامعي</p>
+                    <p class="date">سبتمبر 2017 - يونيو 2020</p>
+                    <p class="description">
+                        إكمال برنامج الإقامة في الطب الباطني. التدريب على تشخيص وعلاج الأمراض المختلفة تحت إشراف أطباء استشاريين. المشاركة في البحوث الطبية ونشر 3 أوراق علمية في مجلات محكمة.
+                    </p>
+                    <div class="medical-achievements">
+                        <h4>الإنجازات الأكاديمية:</h4>
+                        <ul>
+                            <li>نشر 3 أوراق بحثية في مجلات طبية محكمة</li>
+                            <li>المشاركة في 15 مؤتمر طبي محلي ودولي</li>
+                            <li>الحصول على جائزة أفضل بحث طبي للمقيمين</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">التعليم</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">دكتور في الطب</h3>
+                    <p class="institution">جامعة الملك سعود - كلية الطب</p>
+                    <p class="date">2017</p>
+                    <p class="description">المعدل التراكمي: 4.5/5.0 - تخصص في الطب الباطني</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3 class="degree">بكالوريوس العلوم الطبية</h3>
+                    <p class="institution">جامعة الملك سعود</p>
+                    <p class="date">2013</p>
+                    <p class="description">المعدل التراكمي: 4.3/5.0 - تخصص في علوم الطب الأساسية</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">المهارات الطبية</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>التخصصات الطبية</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">الطب الباطني</span>
+                            <span class="skill-tag">أمراض القلب</span>
+                            <span class="skill-tag">أمراض الكلى</span>
+                            <span class="skill-tag">أمراض الجهاز الهضمي</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>المهارات السريرية</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">التشخيص الطبي</span>
+                            <span class="skill-tag">العناية المركزة</span>
+                            <span class="skill-tag">الطوارئ الطبية</span>
+                            <span class="skill-tag">إدارة الألم</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>البحث والتعليم</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">البحث الطبي</span>
+                            <span class="skill-tag">التعليم الطبي</span>
+                            <span class="skill-tag">الطب القائم على الأدلة</span>
+                            <span class="skill-tag">الإحصاء الطبي</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>إدارة الفرق الطبية</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">قيادة الفريق</span>
+                            <span class="skill-tag">إدارة الجودة</span>
+                            <span class="skill-tag">تطوير البروتوكولات</span>
+                            <span class="skill-tag">التدريب الطبي</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">اللغات</h2>
+                
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <div class="language-name">العربية</div>
+                        <div class="language-level">لغة أم</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">الإنجليزية</div>
+                        <div class="language-level">طليق</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">الشهادات والتراخيص</h2>
+                
+                <ul class="certifications-list">
+                    <li class="certification-item">
+                        <div class="cert-name">البورد السعودي للطب الباطني</div>
+                        <div class="cert-issuer">الهيئة السعودية للتخصصات الصحية</div>
+                        <div class="cert-date">يونيو 2020</div>
+                    </li>
+                    <li class="certification-item">
+                        <div class="cert-name">شهادة الإنعاش القلبي الرئوي المتقدم</div>
+                        <div class="cert-issuer">جمعية القلب الأمريكية</div>
+                        <div class="cert-date">فبراير 2023</div>
+                    </li>
+                    <li class="certification-item">
+                        <div class="cert-name">ترخيص مزاولة المهنة</div>
+                        <div class="cert-issuer">وزارة الصحة السعودية</div>
+                        <div class="cert-date">يوليو 2017</div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+

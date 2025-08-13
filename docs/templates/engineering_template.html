@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية - الهندسة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="15" y="15" width="20" height="20" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><rect x="65" y="35" width="15" height="15" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><rect x="35" y="65" width="18" height="18" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+        
+        .contact-item i {
+            width: 16px;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #e67e22;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f39c12;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #2c3e50;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #f39c12;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job-title, .degree {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+        
+        .company, .institution {
+            font-weight: 500;
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .engineering-projects {
+            background: #fef9e7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #2c3e50;
+        }
+        
+        .engineering-projects h4 {
+            color: #e67e22;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .engineering-projects ul {
+            list-style: none;
+            padding-right: 0;
+        }
+        
+        .engineering-projects li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .engineering-projects li::before {
+            content: '⚙️';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #f39c12;
+        }
+        
+        .skill-category h4 {
+            color: #e67e22;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #f39c12;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .language-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #ecf0f1;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+        
+        .language-level {
+            color: #f39c12;
+            font-size: 0.9em;
+        }
+        
+        .certifications-list {
+            list-style: none;
+        }
+        
+        .certification-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #2c3e50;
+        }
+        
+        .cert-name {
+            font-weight: 600;
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+        
+        .cert-issuer {
+            color: #f39c12;
+            font-size: 0.9em;
+        }
+        
+        .cert-date {
+            color: #7f8c8d;
+            font-size: 0.85em;
+            float: left;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover, .education-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">م. خالد سعد المطيري</h1>
+                <p class="title">مهندس مدني أول</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span>khalid.mutairi@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+966 55 444 8888</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>الدمام، المملكة العربية السعودية</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">نبذة مختصرة</h2>
+                <p class="summary">
+                    مهندس مدني معتمد مع أكثر من 7 سنوات من الخبرة في تصميم وإدارة المشاريع الإنشائية الكبرى. خبرة واسعة في استخدام أحدث برامج التصميم الهندسي وإدارة المشاريع. قدت بنجاح أكثر من 25 مشروع بقيمة إجمالية تزيد عن 500 مليون ريال. أتميز بالدقة في التنفيذ والالتزام بمعايير الجودة والسلامة العالمية.
+                </p>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">الخبرة المهنية</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">مهندس مدني أول</h3>
+                    <p class="company">شركة البناء المتقدم</p>
+                    <p class="date">مارس 2020 - حتى الآن</p>
+                    <p class="description">
+                        قيادة فريق هندسي من 15 مهندس في تصميم وتنفيذ المشاريع الإنشائية الكبرى. إدارة مشاريع بقيمة تزيد عن 300 مليون ريال. تطوير حلول هندسية مبتكرة أدت إلى توفير 20% من التكاليف وتقليل وقت التنفيذ بنسبة 15%.
+                    </p>
+                    <div class="engineering-projects">
+                        <h4>المشاريع الرئيسية:</h4>
+                        <ul>
+                            <li>تصميم وتنفيذ مجمع سكني من 500 وحدة</li>
+                            <li>إشراف على بناء مركز تجاري بمساحة 50,000 متر مربع</li>
+                            <li>تطوير نظام إدارة جودة حصل على شهادة ISO 9001</li>
+                            <li>قيادة مشروع جسر بطول 2 كيلومتر</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">مهندس مدني</h3>
+                    <p class="company">مكتب الاستشارات الهندسية</p>
+                    <p class="date">يونيو 2017 - فبراير 2020</p>
+                    <p class="description">
+                        تصميم الهياكل الإنشائية للمباني السكنية والتجارية. إعداد المخططات التنفيذية والإشراف على التنفيذ. التعاون مع فرق متعددة التخصصات لضمان تسليم المشاريع في الوقت المحدد وبالجودة المطلوبة.
+                    </p>
+                    <div class="engineering-projects">
+                        <h4>المشاريع المنجزة:</h4>
+                        <ul>
+                            <li>تصميم 30 مبنى سكني وتجاري</li>
+                            <li>إعداد دراسات الجدوى الفنية لـ 15 مشروع</li>
+                            <li>الحصول على موافقات البلدية لجميع المشاريع</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">التعليم</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">بكالوريوس الهندسة المدنية</h3>
+                    <p class="institution">جامعة الملك فهد للبترول والمعادن</p>
+                    <p class="date">2017</p>
+                    <p class="description">المعدل التراكمي: 3.8/4.0 - تخصص في الهندسة الإنشائية</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">المهارات الهندسية</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>برامج التصميم</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">SAP2000</span>
+                            <span class="skill-tag">ETABS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>إدارة المشاريع</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MS Project</span>
+                            <span class="skill-tag">Primavera P6</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Risk Management</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>التخصصات الهندسية</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">التصميم الإنشائي</span>
+                            <span class="skill-tag">هندسة الطرق</span>
+                            <span class="skill-tag">إدارة الإنشاءات</span>
+                            <span class="skill-tag">مراقبة الجودة</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>المعايير والأكواد</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">الكود السعودي</span>
+                            <span class="skill-tag">ACI Code</span>
+                            <span class="skill-tag">AISC Standards</span>
+                            <span class="skill-tag">ISO Standards</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">اللغات</h2>
+                
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <div class="language-name">العربية</div>
+                        <div class="language-level">لغة أم</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">الإنجليزية</div>
+                        <div class="language-level">طليق</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">الشهادات والعضويات</h2>
+                
+                <ul class="certifications-list">
+                    <li class="certification-item">
+                        <div class="cert-name">مهندس معتمد - الهيئة السعودية للمهندسين</div>
+                        <div class="cert-issuer">الهيئة السعودية للمهندسين</div>
+                        <div class="cert-date">يوليو 2017</div>
+                    </li>
+                    <li class="certification-item">
+                        <div class="cert-name">شهادة إدارة المشاريع PMP</div>
+                        <div class="cert-issuer">معهد إدارة المشاريع PMI</div>
+                        <div class="cert-date">مارس 2021</div>
+                    </li>
+                    <li class="certification-item">
+                        <div class="cert-name">شهادة الجودة ISO 9001 Lead Auditor</div>
+                        <div class="cert-issuer">BSI Group</div>
+                        <div class="cert-date">سبتمبر 2022</div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+

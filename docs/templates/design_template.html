@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية - التصميم والإبداع</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="10" width="15" height="15" fill="rgba(255,255,255,0.1)" transform="rotate(45 17.5 17.5)"/><rect x="70" y="30" width="10" height="10" fill="rgba(255,255,255,0.1)" transform="rotate(45 75 35)"/><rect x="30" y="70" width="12" height="12" fill="rgba(255,255,255,0.1)" transform="rotate(45 36 76)"/></svg>');
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+        
+        .contact-item i {
+            width: 16px;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #8e44ad;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #9b59b6;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e67e22;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #9b59b6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job-title, .degree {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #8e44ad;
+            margin-bottom: 5px;
+        }
+        
+        .company, .institution {
+            font-weight: 500;
+            color: #9b59b6;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .portfolio-highlight {
+            background: #f4f1f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #e67e22;
+        }
+        
+        .portfolio-highlight h4 {
+            color: #8e44ad;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .portfolio-highlight ul {
+            list-style: none;
+            padding-right: 0;
+        }
+        
+        .portfolio-highlight li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .portfolio-highlight li::before {
+            content: '🎨';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #9b59b6;
+        }
+        
+        .skill-category h4 {
+            color: #8e44ad;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #9b59b6;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .language-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #ecf0f1;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #8e44ad;
+            margin-bottom: 5px;
+        }
+        
+        .language-level {
+            color: #9b59b6;
+            font-size: 0.9em;
+        }
+        
+        .certifications-list {
+            list-style: none;
+        }
+        
+        .certification-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #e67e22;
+        }
+        
+        .cert-name {
+            font-weight: 600;
+            color: #8e44ad;
+            margin-bottom: 5px;
+        }
+        
+        .cert-issuer {
+            color: #9b59b6;
+            font-size: 0.9em;
+        }
+        
+        .cert-date {
+            color: #7f8c8d;
+            font-size: 0.85em;
+            float: left;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover, .education-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">سارة محمد العماري</h1>
+                <p class="title">مصمم جرافيك أول</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span>sara.alamari@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+966 50 555 7777</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>دبي، الإمارات العربية المتحدة</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">نبذة مختصرة</h2>
+                <p class="summary">
+                    مصمم جرافيك مبتكر ومهتم بالتفاصيل مع أكثر من 6 سنوات من الخبرة. أملك سجل حافل في تعزيز رؤية العلامة التجارية والمشاركة من خلال الوسائط الرقمية والمطبوعة المصممة بخبرة. أدرت بنجاح أكثر من 100 مشروع من الفكرة إلى الإنجاز، مع التركيز على الابتكار والجودة العالية في كل عمل.
+                </p>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">الخبرة المهنية</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">مصمم جرافيك أول</h3>
+                    <p class="company">شركة الحلول الرقمية</p>
+                    <p class="date">مارس 2021 - حتى الآن</p>
+                    <p class="description">
+                        قيادة الاستراتيجية المرئية لمبادرات العلامات التجارية الكبرى، بما في ذلك إعادة صياغة العلامة التجارية لسلسلة البيع بالتجزئة الوطنية. أدى ذلك إلى زيادة بنسبة 35% في مشاركة المستهلكين عبر المنصات الرقمية خلال الأشهر الستة الأولى بعد الإطلاق.
+                    </p>
+                    <div class="portfolio-highlight">
+                        <h4>أبرز المشاريع:</h4>
+                        <ul>
+                            <li>تصميم هوية بصرية متكاملة لـ 15 علامة تجارية</li>
+                            <li>إنشاء حملة إعلانية حققت 5 مليون مشاهدة</li>
+                            <li>تصميم موقع ويب تفاعلي حاز على جائزة أفضل تصميم</li>
+                            <li>قيادة فريق من 6 مصممين في مشاريع متعددة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">مصمم جرافيك</h3>
+                    <p class="company">استوديو الإبداع</p>
+                    <p class="date">يناير 2019 - فبراير 2021</p>
+                    <p class="description">
+                        تصميم مواد تسويقية متنوعة للعملاء من مختلف القطاعات. إنشاء هويات بصرية متكاملة وتصميم مواقع ويب تفاعلية. التعاون مع فرق التسويق لضمان تحقيق الأهداف المرجوة.
+                    </p>
+                    <div class="portfolio-highlight">
+                        <h4>أبرز المشاريع:</h4>
+                        <ul>
+                            <li>تصميم 50+ بوستر إعلاني لعملاء مختلفين</li>
+                            <li>إنشاء 20 هوية بصرية للشركات الناشئة</li>
+                            <li>تصميم كتالوجات ومطبوعات تسويقية</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">التعليم</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">بكالوريوس الفنون الجميلة - تصميم جرافيك</h3>
+                    <p class="institution">جامعة الأميرة نورة</p>
+                    <p class="date">2018</p>
+                    <p class="description">المعدل التراكمي: 3.9/4.0 - تخصص في التصميم الرقمي والهوية البصرية</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">المهارات التصميمية</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>برامج Adobe</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Illustrator</span>
+                            <span class="skill-tag">InDesign</span>
+                            <span class="skill-tag">After Effects</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>تصميم UI/UX</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Sketch</span>
+                            <span class="skill-tag">Adobe XD</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>التصميم المطبوع</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Branding</span>
+                            <span class="skill-tag">Typography</span>
+                            <span class="skill-tag">Layout Design</span>
+                            <span class="skill-tag">Print Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>التصميم الرقمي</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Web Design</span>
+                            <span class="skill-tag">Social Media</span>
+                            <span class="skill-tag">Motion Graphics</span>
+                            <span class="skill-tag">3D Design</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">اللغات</h2>
+                
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <div class="language-name">العربية</div>
+                        <div class="language-level">لغة أم</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">الإنجليزية</div>
+                        <div class="language-level">طليق</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">الفرنسية</div>
+                        <div class="language-level">متوسط</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">الشهادات والدورات</h2>
+                
+                <ul class="certifications-list">
+                    <li class="certification-item">
+                        <div class="cert-name">Adobe Certified Expert (ACE)</div>
+                        <div class="cert-issuer">Adobe</div>
+                        <div class="cert-date">أغسطس 2022</div>
+                    </li>
+                    <li class="certification-item">
+                        <div class="cert-name">UX Design Professional Certificate</div>
+                        <div class="cert-issuer">Google</div>
+                        <div class="cert-date">يناير 2023</div>
+                    </li>
+                    <li class="certification-item">
+                        <div class="cert-name">Advanced Typography Course</div>
+                        <div class="cert-issuer">Coursera</div>
+                        <div class="cert-date">مايو 2021</div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+
